@@ -1,0 +1,49 @@
+[package]
+name = "ringo"
+version = "0.1.0"
+description = "ringoo"
+authors = ["me"]
+license = ""
+repository = ""
+edition = "2021"
+rust-version = "1.82"
+
+[lib]
+name = "app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.6.3", features = [] }
+
+[dependencies]
+tauri = { version = "2.11.3", features = [] }
+tauri-plugin-dialog = "2.7.2"
+tauri-plugin-log = "2"
+
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+tokio = { version = "1.53", features = ["rt-multi-thread", "macros", "process", "fs", "io-util", "sync", "time"] }
+tokio-util = { version = "0.7", features = ["io"] }
+futures = "0.3"
+
+axum = { version = "0.8", features = ["http1", "tokio"] }
+
+# rustls rather than native-tls: no OpenSSL/schannel build dependency, and the
+# only host we talk to is api.openai.com.
+reqwest = { version = "0.13", default-features = false, features = ["json", "rustls", "webpki-roots", "http2", "stream"] }
+
+# Japanese morphological analysis. `embed-ipadic` compiles the dictionary into
+# the binary, so tokenization needs no runtime download or data directory.
+lindera = { version = "5.3", features = ["embed-ipadic"] }
+
+blake3 = "1.8"
+# The media server's session token. `blake3` hashing a timestamp is not a
+# secret — a local process can guess all three of its inputs — so the token
+# comes from the OS CSPRNG instead. Already in the tree via tauri.
+getrandom = "0.3"
+thiserror = "2.0"
+log = "0.4"
+encoding_rs = "0.8"
+regex = "1.13"
+urlencoding = "2.1"
