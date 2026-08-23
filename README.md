@@ -2,6 +2,7 @@
 **A desktop app for studying Japanese from video**.
 **Powered by Rust+Tauri and next.js**
 Transcribe the anime episode with whisper model, or use embedded subtitles, generate translations and explanations of words/kanjis with AI.
+<img width="1920" height="1054" alt="image" src="https://github.com/user-attachments/assets/7d7e7077-1bc9-47e9-ac3a-7030a8944ea3" />
 
 Also the translation and all that stuff is provided by AI, so u will need an API key for that.
 
@@ -59,5 +60,5 @@ npm install
 pwsh -File scripts/fetch-sidecars.ps1    # ffmpeg, ffprobe, whisper-cli
 
 ```
-### Anki export
+## Anki export
 Exports as tab-separated text rather than an `.apkg` - word, reading, meaning, example, example translation, and optional `ringo::`-prefixed tags - so the columns map onto whatever note type you already study with. Readings can carry furigana (`食[た]べる`), and rows are ordered most-frequent-first, which is the order Anki introduces new cards in.
